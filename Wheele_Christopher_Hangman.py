@@ -1,9 +1,7 @@
-
-
-
-def chooseword = 
-list = open
-
+def chooseword(): 
+list = open('words')
+word = words.readlines()
+print(word)
 
 
 #display code section 
