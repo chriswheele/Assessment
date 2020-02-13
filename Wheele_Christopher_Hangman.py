@@ -1,8 +1,8 @@
 
 
 
-
-word = random.choice(["rarely", "universe", "notice", "sugar", "interference", "constitution", "we", "minus"])
+def chooseword = 
+list = open
 
 
 
