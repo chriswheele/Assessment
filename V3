@@ -1,0 +1,61 @@
+import random
+
+def find_word():
+ #import random word into game from file:
+ list_words = ["rarely", "universe", "notice"]
+ return random.choice(list_words)
+
+def Hangman():
+  
+ word = find_word()
+ guesses_list = []
+ valid_character = "abcdefghijklmnopqrstuvwxyz"
+ attempts = 7
+ guessed = False
+ 
+ print(len(word) * ' _')
+ while guessed == False and attempts > 0:
+  print("\n") 
+  print("Remaining attempts = " + str(attempts))
+  character = input("Please enter your next guess: ")
+  character = character.lower()
+  
+  if len(character) > 1:
+   print "Invalid guess - must be single letter"
+  elif character not in valid_character:
+   print "Invalid guess - must be single letter"
+  elif character == " ":
+   print "Invalid guess - must be single letter"
+  elif character in guesses_list:
+   print "Invalid guess - letter has already been used"
+  elif character not in word:
+   print("\n")  
+   print("Incorrect Guess")
+   guesses_list.append(character)
+   attempts -= 1
+  elif character in word:
+   print("Correct Guess")
+   print("\n")
+   guesses_list.append(character)
+    
+  elif len(character) == len(word):
+   print("Congratulations")
+   guessed = True
+  
+  status = ''
+  if guessed == False:
+   for letter in word:
+    if letter in guesses_list:
+     status += letter
+    else:
+      status += ' _'
+   print(status)
+   
+  if status == word:
+   print("Congratulations")
+   guessed = True
+   
+  elif attempts == 0:
+   print("You have lost")
+    
+Hangman()
