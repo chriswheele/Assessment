@@ -1,0 +1,36 @@
+import random
+
+#import random word into game
+words = ["rarely", "universe", "notice"]
+random.shuffle(words)
+gameanswer = list(words[0])
+print(gameanswer)
+
+#empty list
+display = []
+display.extend(gameanswer)
+
+#run iteration
+for i in range (len(display)):
+  #format hidden word display
+  display[i] = "_"
+  
+print(" ".join(display))
+print"\n"
+
+#attempts
+attempt = 1
+
+while attempt < 7:
+ guess = input("please enter your next guess: ")
+ guess = guess.lower()
+ print(attempt)
+
+ for i in range(len(gameanswer)):
+  if gameanswer[i] == guess :
+   display[i] = guess
+   attempt = attempt + 1
+  
+ #print new display
+ print(" ".join(display))
+ print("\n")
