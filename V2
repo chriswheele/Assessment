@@ -21,7 +21,7 @@ print"\n"
 #attempts
 attempt = 7
 
-while attempt >= 0:
+while attempt > 0:
  print("attempts left: " + str(attempt))
  guess = input("please enter your next guess: ")
  guess = guess.lower()
@@ -34,11 +34,13 @@ while attempt >= 0:
  elif guess in emptylist:
   print "Invalid guess - letter has already been used"
  else:
+   
   for i in range(len(gameanswer)):
    if gameanswer[i] == guess :
     emptylist[i] = guess
     attempt = attempt - 1
-  
+
+   
  #print new display
  print(" ".join(emptylist))
  print("\n")
