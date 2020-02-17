@@ -52,10 +52,13 @@ def Hangman():
    print(status)
    
   if status == word:
+   print("\n")
    print("Congratulations")
    guessed = True
    
   elif attempts == 0:
+   print("\n")  
    print("You have lost")
+   print("The word was " + word)
     
 Hangman()
