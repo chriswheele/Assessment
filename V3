@@ -2,9 +2,13 @@ import random
 
 def find_word():
  #import random word into game from file:
- list_words = ["rarely", "universe", "notice"]
- return random.choice(list_words)
-
+ with open('Words', 'r') as f:
+  words = f.read()
+  list_words = words.splitlines()
+ game_word = random.choice(list_words)
+ sgame_word = game_word.lower()
+ return game_word
+ 
 def Hangman():
 
  #Set up base conditions  
@@ -19,6 +23,7 @@ def Hangman():
  print("\n")
  print(len(word) * ' _')
  while guessed == False and attempts > 0:
+   
   print("\n") 
   print("Remaining attempts = " + str(attempts))
   
