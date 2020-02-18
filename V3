@@ -15,6 +15,8 @@ def Hangman():
  guessed = False
  
  #Display Text and Word
+ print("LET'S PLAY HANGMAN:")
+ print("\n")
  print(len(word) * ' _')
  while guessed == False and attempts > 0:
   print("\n") 
@@ -44,24 +46,24 @@ def Hangman():
    guesses_list.append(character)
  
  #Refresh guess display
-  status = ''
+  display = ''
   if guessed == False:
    for letter in word:
     if letter in guesses_list:
-     status += letter
+     display += letter
     else:
-      status += ' _'
-   print(status)
+      display += ' _'
+   print(display)
 
 #Set winning/loosing conditons
-  if status == word:
+  if display == word:
    print("\n")
-   print("Congratulations")
+   print("Congratulations you win")
    guessed = True
    
   elif attempts == 0:
    print("\n")  
-   print("You have lost")
+   print("You loose")
    print("The word was " + word)
     
 Hangman()
