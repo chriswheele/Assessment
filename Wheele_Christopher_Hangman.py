@@ -1,5 +1,6 @@
 import random
 
+#user game display
 displayed_game = ['''
       _____     
      |     |    
@@ -79,7 +80,7 @@ def Hangman():
 
  #Set up base conditions  
  word = find_word()
- guesses_list = []
+ used_characters = []
  valid_character = "abcdefghijklmnopqrstuvwxyz"
  attempts = 7
  guessed = False
@@ -106,23 +107,25 @@ def Hangman():
    print "Invalid guess - must be single letter"
   elif character == " ":
    print "Invalid guess - must be single letter"
-  elif character in guesses_list:
+  elif character in used_characters:
    print "Invalid guess - letter has already been used"
+   
   elif character not in word:
    print("\n")  
    print("Incorrect Guess")
-   guesses_list.append(character)
+   used_characters.append(character)
    attempts -= 1
+   
   elif character in word:
-   print("Correct Guess")
    print("\n")
-   guesses_list.append(character)
+   print("Correct Guess")
+   used_characters.append(character)
  
  #Refresh guess display
   display = ''
   if guessed == False:
    for letter in word:
-    if letter in guesses_list:
+    if letter in used_characters:
      display += letter
     else:
       display += ' _'
