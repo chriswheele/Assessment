@@ -69,7 +69,7 @@ displayed_game = ['''
   
 def find_word():
  #import random word into game from file:
- #with open('Words', 'r') as f:
+ #with open('word_list.txt', 'r') as f:
   words = f.read()
   list_words = words.splitlines()
  game_word = random.choice(list_words)
