@@ -1,6 +1,6 @@
 import random
 
-#user game display
+#User game display
 displayed_game = ['''
       _____     
      |     |    
@@ -69,7 +69,7 @@ displayed_game = ['''
   
 def find_word():
  #import random word into game from file:
- with open('Words', 'r') as f:
+ #with open('Words', 'r') as f:
   words = f.read()
   list_words = words.splitlines()
  game_word = random.choice(list_words)
@@ -90,6 +90,7 @@ def Hangman():
  print("\n")
  print(len(word) * ' _')
  
+ #Game Loop
  while guessed == False and attempts > 0:
    
   print(displayed_game[attempts])
