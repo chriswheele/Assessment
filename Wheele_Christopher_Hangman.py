@@ -1,115 +1,143 @@
+import random
 
-def displayed_game(attempt, wd):
-    if (attempt == 0):
-      print("    _____     ")
-      print("   |     |    ")
-      print("   |          ")
-      print("   |          ")
-      print("   |          ")
-      print("   |          ")
-      print("   |          ")
-      print("--------------")
-    elif (attempt == 1):
-      print("    _____     ")
-      print("   |     |    ")
-      print("   |     O    ")
-      print("   |          ")
-      print("   |          ")
-      print("   |          ")
-      print("   |          ")
-       print("--------------")
-    elif (attempt == 2):
-      print("    _____     ")
-      print("   |     |    ")
-      print("   |     O    ")
-      print("   |     |    ")
-      print("   |     |    ")
-      print("   |          ")
-      print("   |          ")
-      print("--------------")
-      elif (attempt == 3):
-      print("    _____     ")
-      print("   |     |    ")
-      print("   |     O    ")
-      print("   |     |    ")
-      print("   |     |    ")
-      print("   |    /     ")
-      print("   |          ")
-      print("--------------")
-    elif (attempt == 4):
-      print("    _____     ")
-      print("   |     |    ")
-      print("   |     O    ")
-      print("   |     |    ")
-      print("   |     |    ")
-      print("   |    / \   ")
-      print("   |          ")
-      print("--------------")
-    elif (attempt == 5):
-      print("    _____     ")
-      print("   |     |    ")
-      print("   |     O    ")
-      print("   |   _ |    ")
-      print("   |     |    ")
-      print("   |    / \   ")
-      print("   |          ")
-      print("--------------")
-    elif (attempt == 6):
-      print("    _____     ")
-      print("   |     |    ")
-      print("   |     O    ")
-      print("   |   _ | _  ")
-      print("   |     |    ")
-      print("   |    / \   ")
-      print("   |          ")
-      print("--------------")
-return True
-
-#choose a word to play
-
-def choose_word():
- my_word = "hangman"
- hidden_word = my_word
-return hidden_word
-
-#Hangman game code
-
-def run_hangman():
-  print("Hangman Game")
-  hidden_word = choose_word()
-  word_template = list("*"*len(hidden_word))
-  word_characters = list(solution_word)
-  attempt = 7
-  number_guesses = []
+displayed_game = ['''
+      _____     
+     |     |    
+     |     O     
+     |    _|_     
+     |     |     
+     |    / \   
+     |          
+  --------------''','''
+      _____     
+     |     |    
+     |     O     
+     |    _|_     
+     |     |     
+     |    /  
+     |
+  --------------''',''' 
+      _____     
+     |     |    
+     |     O     
+     |    _|_     
+     |     |     
+     |     
+     |
+  --------------''','''   
+      _____     
+     |     |    
+     |     O     
+     |     |_     
+     |     |     
+     |          
+     |          
+  --------------''',''' 
+      _____     
+     |     |    
+     |     O     
+     |     |     
+     |     |     
+     |     
+     |          
+  --------------''','''   
+      _____     
+     |     |    
+     |     O     
+     |         
+     |         
+     |        
+     |          
+  --------------''',''' 
+      _____     
+     |     |    
+     |        
+     |       
+     |    
+     |      
+     |          
+  --------------''','''
+      _____     
+     |        
+     |         
+     |        
+     |     
+     |        
+     |          
+  --------------'''] 
   
-  while lives >= 0:
-   if word_template == word_characters
-    print("".join(word_template))
-    break
-   hung = hangman_frames(attempt)
-   if hung == True
-    break
-   valid_guess = False
-   while valid_guess == False
-    print("Lives remaining = " + str(lives))
-    print("".join(word_template))
-    guess = input("please enter your next guess: ")
-    allowed_guesses = "abcdefghijklmnopqrstuvwxyz"
-    if guess.lower() not in allowed allowed_guesses or len(guess) > 1:
-      print("Invalid guess - must be single letter")
-      valid_guess = False
-    elif guess.lower() in guessed_letters:
-      print("Invalid guess - letter has already been used")
-      valid_guess = False
+def find_word():
+ #import random word into game from file:
+ with open('Words', 'r') as f:
+  words = f.read()
+  list_words = words.splitlines()
+ game_word = random.choice(list_words)
+ game_word = game_word.lower()
+ return game_word
+ 
+def Hangman():
+
+ #Set up base conditions  
+ word = find_word()
+ guesses_list = []
+ valid_character = "abcdefghijklmnopqrstuvwxyz"
+ attempts = 7
+ guessed = False
+ 
+ #Display Text and Word
+ print("LET'S PLAY HANGMAN:")
+ print("\n")
+ print(len(word) * ' _')
+ 
+ while guessed == False and attempts > 0:
+   
+  print(displayed_game[attempts])
+  print("\n")
+  print("Remaining attempts = " + str(attempts))
+  
+  #Character input
+  character = input("Please enter your next guess: ")
+  character = character.lower()
+  
+  #Check character against hidden word, ensure valid character
+  if len(character) > 1:
+   print "Invalid guess - must be single letter"
+  elif character not in valid_character:
+   print "Invalid guess - must be single letter"
+  elif character == " ":
+   print "Invalid guess - must be single letter"
+  elif character in guesses_list:
+   print "Invalid guess - letter has already been used"
+  elif character not in word:
+   print("\n")  
+   print("Incorrect Guess")
+   guesses_list.append(character)
+   attempts -= 1
+  elif character in word:
+   print("Correct Guess")
+   print("\n")
+   guesses_list.append(character)
+ 
+ #Refresh guess display
+  display = ''
+  if guessed == False:
+   for letter in word:
+    if letter in guesses_list:
+     display += letter
     else:
-      valid_guess = True
-   guess = guess.lower()
-   guessed_letters.oppened(guess))
-   correct = False
-   for i in range(len(solution_word)):
-     if guess == word_characters[i]:
-       word_template[i] = word_characters[i]
-       correct = True
-   if correct == True
-    print("Correct Guess")
-      
+      display += ' _'
+   print(display)
+
+#Set winning/loosing conditons
+  if display == word:
+   print("\n")
+   print("Congratulations you win")
+   guessed = True
+   
+  elif attempts == 0:
+   print(displayed_game[0])
+   print("\n")  
+   print("You loose")
+   print("The word was " + word)
+    
+Hangman()
