@@ -70,8 +70,8 @@ displayed_game = ['''
 def find_word():
  #import random word into game from file:
  #with open('word_list.txt', 'r') as f:
-  words = f.read()
-  list_words = words.splitlines()
+ words = f.read()
+ list_words = words.splitlines()
  game_word = random.choice(list_words)
  game_word = game_word.lower()
  return game_word
@@ -103,13 +103,13 @@ def Hangman():
   
   #Check character against hidden word, ensure valid character
   if len(character) > 1:
-   print "Invalid guess - must be single letter"
+   print("Invalid guess - must be single letter")
   elif character not in valid_character:
-   print "Invalid guess - must be single letter"
+   print("Invalid guess - must be single letter")
   elif character == " ":
-   print "Invalid guess - must be single letter"
+   print("Invalid guess - must be single letter")
   elif character in used_characters:
-   print "Invalid guess - letter has already been used"
+   print("Invalid guess - letter has already been used")
    
   elif character not in word:
    print("\n")  
