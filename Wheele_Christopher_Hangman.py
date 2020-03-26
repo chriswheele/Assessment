@@ -69,12 +69,12 @@ displayed_game = ['''
   
 def find_word():
  #import random word into game from file:
- #with open('word_list.txt', 'r') as f:
- words = f.read()
- list_words = words.splitlines()
- game_word = random.choice(list_words)
- game_word = game_word.lower()
- return game_word
+ #with open("word_list.txt","r") as f:
+  words = f.read()
+  list_words = words.splitlines()
+  game_word = random.choice(list_words)
+  game_word = game_word.lower()
+  return game_word
  
 def Hangman():
 
